@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
 
     //相关物体
     public Map Map;
+    public Generator Generator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Map.Initial();
+        Generator.StartGenerate();
     }
 
     // Update is called once per frame

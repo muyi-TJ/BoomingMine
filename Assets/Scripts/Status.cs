@@ -12,7 +12,6 @@ public class Status : MonoBehaviour
     void Start()
     {
         GameObject.DontDestroyOnLoad(this);
-        selected = new EasyMode();
     }
 
     // Update is called once per frame
@@ -24,5 +23,6 @@ public class Status : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        selected = new EasyMode();
     }
 }
