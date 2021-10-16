@@ -24,6 +24,11 @@ public class Map : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void Initial()
     {
         List<Unit> units = GetComponentsInChildren<Unit>().ToList();
@@ -37,8 +42,33 @@ public class Map : MonoBehaviour
                 newUnit.height = i;
                 newUnit.length = j;
                 fullMap[i, j] = newUnit;
+
+                if(i>0)
+                {
+                    if(j>0)
+                    {
+                        newUnit.AddNear(fullMap[i - 1, j - 1]);
+                    }
+                    newUnit.AddNear(fullMap[i - 1, j]);
+                    if(j+1<l)
+                    {
+                        newUnit.AddNear(fullMap[i - 1, j + 1]);
+                    }
+                }
+                if(j>0)
+                {
+                    newUnit.AddNear(fullMap[i, j - 1]);
+                }
             }
         }
+    }
 
+
+    public void Reset()
+    {
+        foreach(var unit in fullMap)
+        {
+            unit.Reset();
+        }
     }
 }

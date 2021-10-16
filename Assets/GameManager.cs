@@ -37,4 +37,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = pause ? 0 : 1;
     }
+
+    public void Reset()
+    {
+        Map.Reset();
+        Generator.StartGenerate();
+    }
 }
